@@ -1,0 +1,9 @@
+---
+- name: copy configuration file with authentication parameters
+  template: src=mongod.j2 dest=/etc/mongod.conf mode=0644
+
+- name: copy security key file to nodes
+  copy: src=/tmp/mongodb-keyfile dest=/etc/mongodb-keyfile mode=0400
+
+- name: change access right of key file
+  file: path=/etc/mongodb-keyfile state=file owner=mongodb group=mongodb

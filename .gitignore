@@ -1,0 +1,5 @@
+roles/copy-authorized-key/files/*.pub
+inventory/ENVIRONMENT.ini
+*.retry
+.DS_Store
+*.pyc

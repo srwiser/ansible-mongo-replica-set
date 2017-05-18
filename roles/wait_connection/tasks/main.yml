@@ -1,0 +1,3 @@
+---
+- name: wait connection to mongo port
+  wait_for: host=0.0.0.0 port=27017 state="started" delay=5

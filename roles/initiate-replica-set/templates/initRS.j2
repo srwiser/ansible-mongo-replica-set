@@ -1,0 +1,3 @@
+# use admin
+# db.auth("{{ hostvars[inventory_hostname]['db_cluster_admin_username']  }}", "{{ hostvars[inventory_hostname]['db_cluster_admin_password']  }}");
+rs.initiate({_id: "{{ replSet }}", members: [{_id: 0, host: "{{ groups['primary'][0] }}:27017"}]});
