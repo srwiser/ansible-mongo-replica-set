@@ -35,3 +35,4 @@
     - /var/log/mongodb
     - /var/lib/mongodb
     - /etc/apt/sources.list.d/mongodb-org-3.2.list
+  ignore_errors: true
