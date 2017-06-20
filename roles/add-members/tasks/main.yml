@@ -1,6 +1,14 @@
 ---
-- name: copy addMembers script
-  template: src=addMembers.j2 dest=/tmp/addMembers.js
+- name: copy addSecondary script
+  template: src=addSecondary.j2 dest=/tmp/addSecondary.js
 
-- name: add members to the replica set
-  shell: mongo < /tmp/addMembers.js
+- name: add secondary to the replica set
+  shell: mongo < /tmp/addSecondary.js
+  ignore_errors: true
+
+- name: copy addArbiter script
+  template: src=addArbiter.j2 dest=/tmp/addArbiter.js
+
+- name: add arbiter to the replica set
+  shell: mongo < /tmp/addArbiter.js
+  ignore_errors: true

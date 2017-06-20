@@ -54,6 +54,14 @@
   - role: restart_mongod
   - role: wait_connection
 
+# Restart Arbiter taking into account the new configuration (auth / keyFile option defined in /etc/mongod.conf)
+- hosts: arbiter
+  remote_user: mongors
+  sudo: true
+  roles:
+  - role: restart_mongod
+  - role: wait_connection
+
 # Add members to the replicaset and create user for the database
 - hosts: primary
   remote_user: mongors
