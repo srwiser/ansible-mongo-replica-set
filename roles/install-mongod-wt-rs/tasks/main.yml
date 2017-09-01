@@ -13,6 +13,14 @@
     creates=/etc/apt/sources.list.d/mongodb-org-3.2.list
   when: mongo_bin.stat.exists == False
 
+- name: MongoDB | Create Directory
+  file:
+    path: "{{ hostvars[inventory_hostname]['db_directory'] }}"
+    state: directory
+    owner: mongodb
+    group: mongodb
+    mode: 0755
+
 - name: install mongodb
   apt: name={{ item }} state=latest update_cache=yes
   with_items:

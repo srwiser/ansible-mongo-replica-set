@@ -33,6 +33,6 @@
     - /usr/bin/mongo
     - /usr/bin/mongod
     - /var/log/mongodb
-    - /var/lib/mongodb
+    - "{{ hostvars[inventory_hostname]['db_directory'] }}"
     - /etc/apt/sources.list.d/mongodb-org-3.2.list
   ignore_errors: true
