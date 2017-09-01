@@ -6,7 +6,7 @@ storage:
    journal:
       enabled: true
    engine: mmapv1
-   dbPath: "/var/lib/mongodb"
+   dbPath: "{{ hostvars[inventory_hostname]['db_directory'] }}"
 processManagement:
    fork: false
 net:

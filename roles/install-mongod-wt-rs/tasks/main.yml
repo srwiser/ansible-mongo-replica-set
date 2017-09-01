@@ -21,6 +21,14 @@
     group: mongodb
     mode: 0755
 
+- name: MongoDB | Copy MMAPV1 CONF
+  template: src=mongod.mmapv1.j2 dest=/etc/mongod.conf mode=0644
+  when: storage == 'mmapv1'
+
+- name: MongoDB | Copy WIREDTIGER CONF
+  template: src=mongod.wiredtiger.j2 dest=/etc/mongod.conf mode=0644
+  when: storage == 'wiredtiger'
+
 - name: install mongodb
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
@@ -33,8 +41,3 @@
 - name: MongoDB - stop server
   service: name=mongod state=stopped
   when: mongo_bin.stat.exists == False
-
-# On next startup, a configuration file will be used
-- name: copy configuration file
-  template: src=mongod.j2 dest=/etc/mongod.conf mode=0644
-#  when: mongo_bin.stat.exists == False

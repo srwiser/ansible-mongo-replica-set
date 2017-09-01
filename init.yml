@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars_files:
+    - vars/common.yml
   roles:
     - create-sudo-user
     - { role: copy-authorized-key, user: mongors }

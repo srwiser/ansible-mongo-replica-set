@@ -33,9 +33,9 @@ Nodes initialisation
 --------------------
 
 
-```ansible-playbook -i inventory/ENVIRONMENT.ini -k -u ssh_user_name -s init.yml```
+```ansible-playbook -i inventory/ENVIRONMENT.ini -k -s init.yml```
 
-```ansible-playbook -i inventory/ENVIRONMENT.ini main.yml --extra-vars '{"replSet":"replicasetname"}'```
+```ansible-playbook -i inventory/ENVIRONMENT.ini main.yml --extra-vars '{"replSet":"replicasetname", "storage":"wiredtiger/mmapv1"}'```
 
 If you want to cleanup everything
 
