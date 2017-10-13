@@ -4,5 +4,6 @@
   ignore_errors: true
 
 - name: MongoDB | Insure deamon is running correctly
-  service: name=mongod state=restarted
+  shell: sudo systemctl restart mongod
+  ignore_errors: true
 

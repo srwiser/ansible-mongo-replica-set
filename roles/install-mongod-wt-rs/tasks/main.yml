@@ -39,5 +39,6 @@
     mode: 0755
 
 - name: MongoDB - stop server
-  service: name=mongod state=stopped
+  shell: sudo systemctl stop mongod
   when: mongo_bin.stat.exists == False
+  ignore_errors: true

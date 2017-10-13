@@ -4,8 +4,9 @@
   register: mongo_bin
 
 - name: make sure mongod is stopped
-  service: name=mongod state=stopped
+  shell: sudo systemctl stop mongod
   when: mongo_bin.stat.exists == True
+  ignore_errors: true
 
 - name: remove mongodb package
   apt: name={{ item }} state=absent
