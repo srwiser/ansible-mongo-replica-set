@@ -1,0 +1,18 @@
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+systemLog:
+   destination: file
+   path: "/var/log/mongodb/mongod.log"
+   logAppend: true
+storage:
+   journal:
+      enabled: true
+   engine: mmapv1
+   dbPath: "{{ hostvars[inventory_hostname]['db_directory'] }}"
+processManagement:
+   fork: false
+net:
+   port: 37017
+   bindIp: 0.0.0.0
+

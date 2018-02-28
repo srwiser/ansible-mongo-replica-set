@@ -17,8 +17,16 @@
   template: src=mongod.mmapv1.j2 dest=/etc/mongod.conf mode=0644
   when: storage == 'mmapv1'
 
+- name: MongoDB | Copy MMAPV1 Maintenance CONF
+  template: src=mongod.conf.maintenance.mmapv1.j2 dest=/etc/mongod.conf.maintenance mode=0644
+  when: storage == 'mmapv1'
+
 - name: MongoDB | Copy WIREDTIGER CONF
   template: src=mongod.wiredtiger.j2 dest=/etc/mongod.conf mode=0644
+  when: storage == 'wiredtiger'
+
+- name: MongoDB | Copy WIREDTIGER Maintenance CONF
+  template: src=mongod.conf.maintenance.wiredtiger.j2 dest=/etc/mongod.conf.maintenance mode=0644
   when: storage == 'wiredtiger'
 
 - name: install mongodb
